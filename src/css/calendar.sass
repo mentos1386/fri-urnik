@@ -1,0 +1,83 @@
+#calendar
+  z-index: 2
+  margin-top: -65px
+  max-height: calc(100vh - 80px)
+
+#calendar-content
+  padding: 0
+  overflow-y: auto
+  overflow-x: hidden
+  position: relative
+
+  .time-table
+    border-right: 1px solid material-color("grey", "300")
+    padding-top: 150px
+
+    .time
+      color: rgba(#000000, 0.54)
+      padding: 0 0.7em 0 0
+      line-height: 5rem
+      text-align: end
+      &:first-of-type
+        border-top: 1px solid material-color("grey", "300")
+      &:after
+        content: ""
+        position: absolute
+        width: 100%
+        margin-top: 2.5rem
+        margin-left: 0.7em
+        height: 1px
+        border-top: 1px solid material-color("grey", "300")
+
+  .days-table
+    .day
+      width: 20%
+
+      .head
+        font-size: 35px
+        line-height: 60px
+        font-weight: 400
+        margin: 0
+        padding: 0 0 0 20px
+        height: 8.8rem
+        .date
+          display: block
+          line-height: 0
+          font-size: 50px
+          color: material-color("red", "300")
+
+      .content
+        margin: 0
+        padding: 0
+        list-style: none
+
+        .day
+          height: 100%
+
+        li
+          &:first-of-type
+            margin-top: calc(2.5rem + 1px)
+          position: relative
+          height: 3rem
+          overflow: hidden
+          .data
+            position: absolute
+            padding: 0.25rem
+            color: rgba(#ffffff, 1)
+            border-radius: 2px
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)
+            .teacher
+              color: rgba(#ffffff, 0.7)
+
+          // Different time spans
+          @include timespans()
+          // Different colors
+          &[color="1"]
+            .data
+              background: material-color("red")
+          &[color="2"]
+            .data
+              background: material-color("blue-grey")
+          &[empty]
+            .data
+              box-shadow: none

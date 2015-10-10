@@ -1,0 +1,24 @@
+// Import Angular Material
+@import "../../vendor/angular-material/angular-material.css"
+// Import Colors
+@import "../../vendor/sass-material-colors/sass/sass-material-colors"
+// Import Icons
+@import "../../vendor/ionicons/css/ionicons.css"
+
+body
+  background: material-color("grey", "300")
+  color: rgba(#000000, 0.87)
+  overflow: hidden
+
+// Calculate EM value
+@function em($em)
+  @return ($em * 10) + px
+// Calculate task size
+@function task-size($time)
+  @return ($time * 3rem) + ($time * 2rem)
+
+// Import other sections
+@import "mixins"
+@import "header"
+@import "calendar"
+@import "typography"

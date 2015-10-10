@@ -1,0 +1,37 @@
+{
+  "name": "FRI-Timetable",
+  "version": "0.0.1",
+  "main": "grunt.js",
+  "dependencies": {
+    "express": ">= 3.1.0",
+    "ejs": ">= 0.8.4",
+    "underscore": "latest",
+    "serve-favicon": "latest",
+    "prerender-node": "latest",
+    "node-env-file": "latest",
+    "compression": "latest",
+    "supervisor": "latest",
+    "request": "latest"
+  },
+  "engines": {
+    "node": "0.10.21"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "latest",
+    "grunt-contrib-clean": ">=0.4.0",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-haml": "latest",
+    "grunt-html2js": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mentos1386/fri-timetable"
+  },
+  "readmeFilename": "README.md"
+}
