@@ -7,22 +7,6 @@ module.exports = function (grunt) {
         uglify: {
             my_target: {
                 files: {
-                    'app/js/application.min.js': [
-                        // APP FILES
-                        'app/js/app.js',
-                        'app/js/services.js',
-                        'app/js/controllers.js',
-                        'app/js/filters.js',
-                    ],
-                    'app/js/dependencies.min.js': [
-                        // DEPENDENCIES FILES
-                        'vendor/angular/angular.js',
-                        'vendor/ui-router/release/angular-ui-router.js',
-                        'vendor/angular-resource/angular-resource.js',
-                        'vendor/angular-animate/angular-animate.js',
-                        'vendor/angular-aria/angular-aria.js',
-                        'vendor/angular-material/angular-material.js',
-                    ]
                 }
             }
         },

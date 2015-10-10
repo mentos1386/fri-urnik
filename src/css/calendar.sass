@@ -1,25 +1,28 @@
 #calendar
   z-index: 2
-  margin-top: -65px
-  max-height: calc(100vh - 80px)
+  margin: 50px 0
+
+  // Wana be responsive
+  // Make it scrollable left/right when size < medium (1280px)
+  min-width: $bb-layout-breakpoint-medium
 
 #calendar-content
   padding: 0
-  overflow-y: auto
-  overflow-x: hidden
   position: relative
+  margin: auto
+  // Wana be responsive
+  overflow: hidden
 
   .time-table
-    border-right: 1px solid material-color("grey", "300")
-    padding-top: 150px
-
+    border-right: 1px solid bb-color("grey", "300")
+    padding-top: 100px
     .time
       color: rgba(#000000, 0.54)
       padding: 0 0.7em 0 0
       line-height: 5rem
       text-align: end
       &:first-of-type
-        border-top: 1px solid material-color("grey", "300")
+        border-top: 1px solid bb-color("grey", "300")
       &:after
         content: ""
         position: absolute
@@ -27,39 +30,30 @@
         margin-top: 2.5rem
         margin-left: 0.7em
         height: 1px
-        border-top: 1px solid material-color("grey", "300")
+        border-top: 1px solid bb-color("grey", "300")
 
   .days-table
     .day
       width: 20%
-
       .head
         font-size: 35px
         line-height: 60px
         font-weight: 400
-        margin: 0
         padding: 0 0 0 20px
-        height: 8.8rem
+        height: 124px
         .date
           display: block
           line-height: 0
           font-size: 50px
-          color: material-color("red", "300")
+          color: bb-color("red", "300")
 
       .content
         margin: 0
         padding: 0
         list-style: none
-
-        .day
-          height: 100%
-
         li
-          &:first-of-type
-            margin-top: calc(2.5rem + 1px)
           position: relative
           height: 3rem
-          overflow: hidden
           .data
             position: absolute
             padding: 0.25rem
@@ -74,10 +68,7 @@
           // Different colors
           &[color="1"]
             .data
-              background: material-color("red")
+              background: bb-color("red")
           &[color="2"]
             .data
-              background: material-color("blue-grey")
-          &[empty]
-            .data
-              box-shadow: none
+              background: bb-color("blue-grey")

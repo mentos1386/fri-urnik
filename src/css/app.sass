@@ -1,18 +1,18 @@
-// Import Angular Material
-@import "../../vendor/angular-material/angular-material.css"
-// Import Colors
-@import "../../vendor/sass-material-colors/sass/sass-material-colors"
+// Import Roboto Fontface
+$roboto-font-path: "../../vendor/roboto-fontface/fonts"
+@import "../../vendor/roboto-fontface/css/roboto-fontface"
+// Import Barebone Framework
+@import "../../vendor/barebone/sass/barebone"
 // Import Icons
 @import "../../vendor/ionicons/css/ionicons.css"
 
+html
+  // Override Barebone
+  font-size: 100%
 body
-  background: material-color("grey", "300")
+  background: bb-color("grey", "300")
   color: rgba(#000000, 0.87)
-  overflow: hidden
 
-// Calculate EM value
-@function em($em)
-  @return ($em * 10) + px
 // Calculate task size
 @function task-size($time)
   @return ($time * 3rem) + ($time * 2rem)
@@ -21,4 +21,4 @@ body
 @import "mixins"
 @import "header"
 @import "calendar"
-@import "typography"
+@import "partials"
