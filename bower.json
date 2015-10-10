@@ -1,12 +1,11 @@
 {
   "name": "FRI Timetable",
-  "description": "FRI Timetable redesign in material design",
-  "version": "0.0.0",
-  "homepage": "",
+  "description": "FRI Timetable design inspired by Material Design",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mentos1386/fri-urnik/",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "ionicons": "latest",
     "barebone": "latest"
   }
 }
