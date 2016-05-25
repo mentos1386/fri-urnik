@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 
 class Config {
     
@@ -8,8 +8,8 @@ class Config {
         return resolve(__dirname, '..');
     }
     
-    path(path) {
-        return resolve(this.base, path);
+    path(...path) {
+        return join(this.base, ...path);
     }
     
     get devtool() {
@@ -42,6 +42,23 @@ class Config {
                 test: /\.js$/,
                 include: this.path('src'),
                 loaders: [ 'babel' ]
+            },
+            style: {
+                test: /\.css$/,
+                include: this.path('src', 'style'),
+                loaders: [ 'style', 'css' ]
+            },
+            woff: {
+                test: /\.woff2?(\?.*)?$/,
+                loaders:[ 'url?limit=10000&mimetype=application/font-woff' ]
+            },
+            ttf: {
+                test: /\.ttf(\?.*)?$/,
+                loaders:[ 'file' ]
+            },
+            eot: {
+                test: /\.eot(\?.*)?$/,
+                loaders:[ 'file' ]
             }
         };
     }
