@@ -1,5 +1,6 @@
-import '~/style/index.css';
-import 'react-mdl/extra/material';
+import 'material-design-icons/iconfont/material-icons';
+import 'roboto-fontface/css/roboto-fontface';
+import 'react-toolbox/lib/commons';
 
 import { render } from 'react-dom';
 

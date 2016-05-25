@@ -43,14 +43,21 @@ class Config {
                 include: this.path('src'),
                 loaders: [ 'babel' ]
             },
-            style: {
+            css: {
                 test: /\.css$/,
-                include: this.path('src', 'style'),
                 loaders: [ 'style', 'css' ]
+            },
+            scss: {
+                test: /\.scss$/,
+                loaders: [ 'style', 'css?modules', 'sass' ]
             },
             woff: {
                 test: /\.woff2?(\?.*)?$/,
                 loaders:[ 'url?limit=10000&mimetype=application/font-woff' ]
+            },
+            svg: {
+                test: /\.svg(\?.*)?$/,
+                loaders:[ 'url?limit=10000&mimetype=svg+xml' ]
             },
             ttf: {
                 test: /\.ttf(\?.*)?$/,
@@ -65,7 +72,8 @@ class Config {
     
     get resolve() {
         return {
-            alias: this.alias
+            alias: this.alias,
+            extensions: this.extensions
         };
     }
     
@@ -74,6 +82,10 @@ class Config {
             // Resolve paths starting with ~ as project relative
             '~': this.path('src')
         };
+    }
+    
+    get extensions() {
+        return [ '', '.js', '.css', '.scss' ];
     }
     
     get plugins() {
