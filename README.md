@@ -1,3 +1,3 @@
-# FRI Timetable
+# FRI Urnik
 
-Time table redesigned in material design
+Spletni in mobilni urnik za FRI

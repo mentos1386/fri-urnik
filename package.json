@@ -1,37 +1,34 @@
 {
-  "name": "FRI-Timetable",
+  "name": "fri-urnik",
+  "description": "Spletni in mobilni urnik za FRI",
   "version": "0.0.1",
-  "main": "grunt.js",
+  "private": true,
   "dependencies": {
-    "express": ">= 3.1.0",
-    "ejs": ">= 0.8.4",
-    "underscore": "latest",
-    "serve-favicon": "latest",
-    "prerender-node": "latest",
-    "node-env-file": "latest",
-    "compression": "latest",
-    "supervisor": "latest",
-    "request": "latest"
-  },
-  "engines": {
-    "node": "0.10.21"
+    "react": "15.1.0",
+    "react-dom": "15.1.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-cli": "latest",
-    "grunt-contrib-clean": ">=0.4.0",
-    "grunt-contrib-coffee": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-haml": "latest",
-    "grunt-html2js": "latest"
+    "babel-cli": "6.9.0",
+    "babel-core": "6.9.0",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "react-hot-loader": "1.3.0",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mentos1386/fri-urnik/"
+  "scripts": {
+    "start": "babel-node scripts/server.js",
+    "build": "babel-node scripts/build.js"
   },
-  "readmeFilename": "README.md"
+  "author": "",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  }
 }
