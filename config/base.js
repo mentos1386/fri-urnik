@@ -49,7 +49,7 @@ class Config {
             },
             scss: {
                 test: /\.scss$/,
-                loaders: [ 'style', 'css?modules', 'sass' ]
+                loaders: [ 'style', 'css?modules', 'sass', 'toolbox' ]
             },
             woff: {
                 test: /\.woff2?(\?.*)?$/,
@@ -96,6 +96,12 @@ class Config {
         ];
     }
     
+    get toolbox() {
+        return {
+            theme: this.path('src', 'theme.scss')
+        };
+    }
+    
     get webpack() {
         return {
             devtool: this.devtool,
@@ -103,7 +109,8 @@ class Config {
             output: this.output,
             module: this.module,
             resolve: this.resolve,
-            plugins: this.plugins
+            plugins: this.plugins,
+            toolbox: this.toolbox
         };
     }
     
