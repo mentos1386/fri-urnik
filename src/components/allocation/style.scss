@@ -1,0 +1,16 @@
+.allocation {
+    background: $color-accent;
+    width: 350px;
+    
+    &.lecture {
+        background: $color-primary;
+    }
+    
+    .title * {
+        color: $color-primary-contrast;
+    }
+    
+    .text {
+        color: transparentize($color-primary-contrast, 0.1);
+    }
+}
