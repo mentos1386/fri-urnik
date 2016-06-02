@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "6.9.1",
     "classnames": "2.2.5",
     "material-design-icons": "2.2.3",
     "normalize.css": "4.1.1",

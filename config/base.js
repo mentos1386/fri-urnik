@@ -17,7 +17,7 @@ class Config {
     }
     
     get entry() {
-        return [ './src/index.js' ];
+        return [ 'babel-polyfill', './src/index.js' ];
     }
     
     get output() {
