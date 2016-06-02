@@ -8,6 +8,7 @@ const compiler = webpack(config.webpack);
 
 const server = new WebpackDevServer(compiler, {
     hot: true,
+    historyApiFallback: true,
     contentBase: config.output.path
 });
 
