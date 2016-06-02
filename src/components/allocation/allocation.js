@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import style from './style';
 
-function Allocation({ subject, location, teacher, lecture }) {
+function Allocation({ activity, classroom, teacher, lecture }) {
     const allocation = cx(style.allocation, {
        [style.lecture]: lecture
     });
@@ -11,8 +11,8 @@ function Allocation({ subject, location, teacher, lecture }) {
     return (
         <Card className={allocation}>
             <CardTitle
-                title={subject}
-                subtitle={location}
+                title={activity}
+                subtitle={classroom}
                 className={style.title}
             />
             <CardText
