@@ -11,7 +11,10 @@
     "react": "15.1.0",
     "react-addons-css-transition-group": "15.1.0",
     "react-dom": "15.1.0",
+    "react-redux": "4.4.5",
+    "react-router": "2.4.1",
     "react-toolbox": "0.16.2",
+    "redux": "3.5.2",
     "roboto-fontface": "0.4.5"
   },
   "devDependencies": {
