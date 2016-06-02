@@ -1,39 +1,7 @@
-@import "~react-toolbox/lib/globals";
-@import "~react-toolbox/lib/app_bar/config";
-
 .layout {
     position: absolute;
 }
 
-.layout .header {
-    height: 4.8rem;
-    padding: 0 0.6rem;
-    
-    h1 {
-        font-size: 2rem;
-        font-weight: 500;
-    }
-    
-    .menu {
-        margin-right: 0.8rem;
-    }
-}
-
 .layout .panel {
     justify-content: flex-start;
-}
-
-@media (min-width: $layout-breakpoint-lg-tablet) {
-    .layout .header {
-        height: 6.4rem;
-        padding: 0 2.4rem;
-        
-        .menu {
-            margin-right: 2rem;
-            
-            span {
-                font-size: 2.4rem;
-            }
-        }
-    }
 }

@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { AppBar, IconButton } from 'react-toolbox';
 import { Layout, NavDrawer, Panel } from 'react-toolbox';
 
+import { AppBar, Drawer } from '~/containers';
 import style from './style';
 
 class Root extends Component {
@@ -25,20 +25,11 @@ class Root extends Component {
         return (
             <Layout className={style.layout}>
                 <NavDrawer active={drawer} onOverlayClick={::this.closeDrawer}>
-                    
+                    <Drawer />
                 </NavDrawer>
                 
                 <Panel className={style.panel}>
-                    <AppBar className={style.header}>
-                        <IconButton
-                            icon="menu" inverse
-                            onClick={::this.toggleDrawer}
-                            className={style.menu}
-                        />
-                        <h1>
-                            FRI Urnik
-                        </h1>
-                    </AppBar>
+                    <AppBar onDrawerClick={::this.toggleDrawer} />
                     
                     { children }
                 </Panel>
