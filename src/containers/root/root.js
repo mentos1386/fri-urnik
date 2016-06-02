@@ -31,7 +31,9 @@ class Root extends Component {
                 <Panel className={style.panel}>
                     <AppBar onDrawerClick={::this.toggleDrawer} />
                     
-                    { children }
+                    <div className={style.wrapper}>
+                        { children }
+                    </div>
                 </Panel>
             </Layout>
         );

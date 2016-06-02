@@ -1,7 +1,23 @@
 .layout {
-    position: absolute;
+    background: #f5f5f5;
 }
 
 .layout .panel {
     justify-content: flex-start;
+    
+    min-height: 100vh;
+}
+
+.layout .wrapper {
+    width: 100%;
+    max-width: $desktop-breakpoint;
+    
+    margin: 0 auto;
+    padding: 0 0.8rem;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .layout .wrapper {
+        padding: 0;
+    }
 }

@@ -9,15 +9,17 @@ class AppBar extends Component {
         const { onDrawerClick } = this.props;
         
         return (
-            <TopBar className={style.header}>
-                <IconButton
-                    icon="menu" inverse
-                    onClick={onDrawerClick}
-                    className={style.menu}
-                />
-                
-                <h1>FRI Urnik</h1>
-            </TopBar>
+            <div className={style.container}>
+                <TopBar className={style.header}>
+                    <IconButton
+                        icon="menu" inverse
+                        onClick={onDrawerClick}
+                        className={style.menu}
+                    />
+                    
+                    <h1>FRI Urnik</h1>
+                </TopBar>
+            </div>
         );
     }
     
