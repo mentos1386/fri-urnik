@@ -71,26 +71,32 @@ class SchedulePicker extends Component {
     }
     
     updateYear(year) {
-        this.setState({
-            program: null,
-            group: null,
-            year
-        });
+        if (this.state.year != year) {
+            this.setState({
+                program: null,
+                group: null,
+                year
+            });
+        }
     }
     
     updateProgram(program) {
-        this.props.dispatch(fetchGroups(program));
-        
-        this.setState({
-            group: null,
-            program
-        });
+        if (this.state.program != program) {
+            this.props.dispatch(fetchGroups(program));
+            
+            this.setState({
+                group: null,
+                program
+            });
+        }
     }
     
     updateGroup(group) {
-        this.setState({
-            group
-        });
+        if (this.state.group != group) {
+            this.setState({
+                group
+            });
+        }
     }
     
     openFinder() {

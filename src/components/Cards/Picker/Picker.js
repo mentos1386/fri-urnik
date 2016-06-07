@@ -50,6 +50,10 @@ class Picker extends Component {
         const { groups } = this.props.sources;
         const { program } = this.props.values;
         
+        if (program == null) {
+            return [];
+        }
+        
         return [{
             value: program,
             label: 'Brez skupine'
