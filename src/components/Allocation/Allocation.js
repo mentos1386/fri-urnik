@@ -1,15 +1,16 @@
+import { PropTypes } from 'react';
 import { Card, CardText, CardTitle } from 'react-toolbox';
 import cx from 'classnames';
 
 import style from './style';
 
 function Allocation({ activity, classroom, teacher, lecture }) {
-    const allocation = cx(style.allocation, {
+    const className = cx(style.allocation, {
        [style.lecture]: lecture
     });
     
     return (
-        <Card className={allocation}>
+        <Card className={className}>
             <CardTitle
                 title={activity}
                 subtitle={classroom}
@@ -22,5 +23,16 @@ function Allocation({ activity, classroom, teacher, lecture }) {
         </Card>
     );
 }
+
+Allocation.defaultProps = {
+    lecture: false
+};
+
+Allocation.propTypes = {
+    activity: PropTypes.string.isRequired,
+    classroom: PropTypes.string.isRequired,
+    teacher: PropTypes.string.isRequired,
+    lecture: PropTypes.bool
+};
 
 export default Allocation;

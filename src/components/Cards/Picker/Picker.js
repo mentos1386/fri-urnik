@@ -1,10 +1,32 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { Dropdown, Button } from 'react-toolbox';
 import { Card, CardTitle, CardText, CardActions } from 'react-toolbox';
 
 import style from '../style';
 
 class Picker extends Component {
+    
+    static propTypes = {
+        onOpen: PropTypes.func.isRequired,
+        
+        values: PropTypes.shape({
+            year: PropTypes.number,
+            group: PropTypes.string,
+            program: PropTypes.string
+        }),
+        
+        sources: PropTypes.shape({
+            years: PropTypes.arrayOf(PropTypes.number).isRequired,
+            groups: PropTypes.arrayOf(PropTypes.object).isRequired,
+            programs: PropTypes.arrayOf(PropTypes.object).isRequired
+        }),
+        
+        onChange: PropTypes.shape({
+            onSelectYear: PropTypes.func.isRequired,
+            onSelectGroup: PropTypes.func.isRequired,
+            onSelectProgram: PropTypes.func.isRequired
+        })
+    };
     
     getYears() {
         const { years } = this.props.sources;
@@ -38,7 +60,7 @@ class Picker extends Component {
     }
     
     render() {
-        const { values, onChange } = this.props;
+        const { values, onOpen, onChange } = this.props;
         
         const { year, program, group } = values;
         const { onSelectYear, onSelectProgram, onSelectGroup } = onChange;
@@ -46,6 +68,7 @@ class Picker extends Component {
         return (
             <Card className={style.card}>
                 <CardTitle title="Izberi urnik" />
+                
                 <CardText className={style.content}>
                     <Dropdown
                         label="Letnik"
@@ -68,8 +91,13 @@ class Picker extends Component {
                         disabled={program == null}
                     />
                 </CardText>
+                
                 <CardActions className={style.actions}>
-                    <Button label="Odpri" disabled={group == null} />
+                    <Button
+                        label="Odpri"
+                        disabled={group == null}
+                        onClick={onOpen}
+                    />
                 </CardActions>
             </Card>
         );

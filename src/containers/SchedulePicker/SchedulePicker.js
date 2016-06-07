@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPrograms, fetchGroups } from '~/actions/programs';
@@ -6,6 +6,23 @@ import { fetchPrograms, fetchGroups } from '~/actions/programs';
 import { Finder, Picker } from '~/components/Cards';
 
 class SchedulePicker extends Component {
+    
+    static propTypes = {
+        years: PropTypes.shape({
+            loading: PropTypes.bool.isRequired,
+            items: PropTypes.arrayOf(PropTypes.number).isRequired
+        }),
+        
+        groups: PropTypes.objectOf(PropTypes.shape({
+            loading: PropTypes.bool.isRequired,
+            items: PropTypes.arrayOf(PropTypes.object).isRequired
+        })),
+        
+        programs: PropTypes.objectOf(PropTypes.shape({
+            loading: PropTypes.bool.isRequired,
+            items: PropTypes.arrayOf(PropTypes.object).isRequired
+        }))
+    };
     
     state = {
         student: '',
@@ -76,6 +93,14 @@ class SchedulePicker extends Component {
         });
     }
     
+    openFinder() {
+        console.log(this.state.student);
+    }
+    
+    openPicker() {
+        console.log(this.state.group);
+    }
+    
     render() {
         const { student } = this.state;
         const { year, program, group } = this.state;
@@ -102,11 +127,13 @@ class SchedulePicker extends Component {
             <div>
                 <Finder
                     value={student}
+                    onOpen={::this.openFinder}
                     onChange={::this.updateStudent}
                 />
                 <Picker
                     values={values}
                     sources={sources}
+                    onOpen={::this.openPicker}
                     onChange={updatePicker}
                 />
             </div>
