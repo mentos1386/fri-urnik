@@ -1,21 +1,24 @@
 import { combineReducers } from 'redux';
+import { map, mapValues, sortedUniq, groupBy, partial } from 'lodash';
 
 import {
     REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
     REQUEST_GROUPS, RECEIVE_GROUPS
 } from '~/actions/programs';
 
-const initialIndex = {
+const initial = {
     items: [],
     loading: false
 };
 
-function index(state = initialIndex, { type, items }) {
+function list(state = initial, { type, items }) {
     switch (type) {
         case REQUEST_PROGRAMS:
+        case REQUEST_GROUPS:
             return { ...state, loading: true };
             
         case RECEIVE_PROGRAMS:
+        case RECEIVE_GROUPS:
             return { ...state, loading: false, items };
             
         default:
@@ -23,18 +26,32 @@ function index(state = initialIndex, { type, items }) {
     }
 }
 
-const initialGroups = {
-    items: [],
-    loading: false
-};
-
-function groups(state = initialGroups, { type, items }) {
+function years(state = initial, { type, items }) {
     switch (type) {
-        case REQUEST_GROUPS:
-            return { ...state, loading: true };
+        case REQUEST_PROGRAMS:
+        case RECEIVE_PROGRAMS:
+            const years = sortedUniq(map(items, 'year'));
+            return list(state, { type, items: years });
             
-        case RECEIVE_GROUPS:
-            return { ...state, loading: false, items };
+        default:
+            return state;
+    }
+}
+
+function programsByYear(state = {}, { type, items }) {
+    const reducer = partial(list, undefined);
+    
+    switch (type) {
+        case REQUEST_PROGRAMS:
+            return mapValues(state, programs => reducer({
+                type
+            }));
+            
+        case RECEIVE_PROGRAMS:
+            return mapValues(groupBy(items, 'year'), programs => reducer({
+                items: programs,
+                type
+            }));
             
         default:
             return state;
@@ -49,7 +66,7 @@ function groupsByProgram(state = {}, action) {
         case RECEIVE_GROUPS:
             return {
                 ...state,
-                [program]: groups(state[program], action)
+                [program]: list(state[program], action)
             };
             
         default:
@@ -58,6 +75,7 @@ function groupsByProgram(state = {}, action) {
 }
 
 export default combineReducers({
-  index,
+  years,
+  programsByYear,
   groupsByProgram
 });

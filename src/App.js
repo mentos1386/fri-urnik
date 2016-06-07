@@ -1,21 +1,15 @@
 import { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute } from 'react-router';
-
-import { Root, Dashboard } from '~/containers';
+import { Router } from 'react-router';
 
 class App extends Component {
     
     render() {
-        const { store, history } = this.props;
+        const { store, routes, history } = this.props;
         
         return (
             <Provider store={store}>
-                <Router history={history}>
-                    <Route path="/" component={Root}>
-                        <IndexRoute component={Dashboard} />
-                    </Route>
-                </Router>
+                <Router routes={routes} history={history} />
             </Provider>
         );
     }

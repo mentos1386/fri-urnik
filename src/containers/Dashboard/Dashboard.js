@@ -1,12 +1,12 @@
 import { Component } from 'react';
 
+import SchedulePicker from '../SchedulePicker';
+
 class Dashboard extends Component {
     
     render() {
         return (
-            <div>
-                
-            </div>
+            <SchedulePicker />
         );
     }
     

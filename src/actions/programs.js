@@ -1,10 +1,11 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import { sortBy } from 'lodash';
 
-const REQUEST_PROGRAMS = Symbol('REQUEST_PROGRAMS');
-const RECEIVE_PROGRAMS = Symbol('RECEIVE_PROGRAMS');
+const REQUEST_PROGRAMS = 'REQUEST_PROGRAMS';
+const RECEIVE_PROGRAMS = 'RECEIVE_PROGRAMS';
 
-const REQUEST_GROUPS = Symbol('REQUEST_GROUPS');
-const RECEIVE_GROUPS = Symbol('RECEIVE_GROUPS');
+const REQUEST_GROUPS = 'REQUEST_GROUPS';
+const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 
 function requestPrograms() {
     return {
@@ -12,10 +13,10 @@ function requestPrograms() {
     };
 }
 
-function receivePrograms({ index }) {
+function receivePrograms(items) {
     return {
         type: RECEIVE_PROGRAMS,
-        items: index
+        items
     };
 }
 
@@ -25,9 +26,11 @@ function fetchPrograms() {
         
         try {
             const response = await fetch('/api/programs');
-            const programs = await response.json();
+            const { index: programs } = await response.json();
             
-            dispatch(receivePrograms(programs));
+            const items = sortBy(programs, [ 'year', 'name' ]);
+            
+            dispatch(receivePrograms(items));
         } catch (error) {
             console.warn(error);
         }
@@ -41,11 +44,10 @@ function requestGroups(program) {
     };
 }
 
-function receiveGroups(program, { index }) {
+function receiveGroups(program, items) {
     return {
         type: RECEIVE_GROUPS,
-        items: index,
-        program
+        program, items
     };
 }
 
@@ -55,9 +57,11 @@ function fetchGroups(program) {
         
         try {
             const response = await fetch(`/api/programs/${program}/groups`);
-            const groups = await response.json();
+            const { index: groups } = await response.json();
             
-            dispatch(receiveGroups(program, groups));
+            const items = sortBy(groups, 'group');
+            
+            dispatch(receiveGroups(program, items));
         } catch (error) {
             console.warn(error);
         }

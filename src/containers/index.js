@@ -1,6 +1,12 @@
 // Import all subdirectories
-const context = require.context('.', true, /^\.\/([\w]+)\/index$/);
+
+let modules = {};
+const context = require.context('.', true, /^\.\/[\w]+\/index$/);
 
 context.keys().forEach(key => {
-    exports[key.split('/')[1]] = context(key).default; 
+    const name = key.split('/')[1];
+    
+    exports[name] = modules[name] = context(key).default; 
 });
+
+exports.default = modules;
