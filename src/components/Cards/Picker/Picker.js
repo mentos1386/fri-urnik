@@ -59,7 +59,7 @@ class Picker extends Component {
             label: 'Brez skupine'
         }, ...groups.map(group => ({
             value: group.id,
-            label: `${group.group}. skupina`
+            label: `Skupina ${group.group}`
         }))];
     }
     

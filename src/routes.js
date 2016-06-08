@@ -1,10 +1,11 @@
 import { Route, IndexRoute } from 'react-router';
 
-import { Root, Dashboard } from '~/containers';
+import { Root, Dashboard, Schedule } from '~/containers';
 
 const routes = (
     <Route path="/" component={Root}>
         <IndexRoute component={Dashboard} />
+        <Route path="group/:group" component={Schedule} />
     </Route>
 );
 

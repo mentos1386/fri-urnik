@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 
 import { fetchPrograms, fetchGroups } from '~/actions/programs';
@@ -11,17 +12,17 @@ class SchedulePicker extends Component {
         years: PropTypes.shape({
             loading: PropTypes.bool.isRequired,
             items: PropTypes.arrayOf(PropTypes.number).isRequired
-        }),
+        }).isRequired,
         
         groups: PropTypes.objectOf(PropTypes.shape({
             loading: PropTypes.bool.isRequired,
             items: PropTypes.arrayOf(PropTypes.object).isRequired
-        })),
+        })).isRequired,
         
         programs: PropTypes.objectOf(PropTypes.shape({
             loading: PropTypes.bool.isRequired,
             items: PropTypes.arrayOf(PropTypes.object).isRequired
-        }))
+        })).isRequired
     };
     
     state = {
@@ -105,6 +106,8 @@ class SchedulePicker extends Component {
     
     openPicker() {
         console.log(this.state.group);
+        
+        this.props.dispatch(push(`/group/${this.state.group}`));
     }
     
     render() {

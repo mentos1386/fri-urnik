@@ -4,13 +4,17 @@ import 'react-toolbox/lib/commons';
 import '~/style';
 
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
 
-import store from '~/store';
+import history from '~/history';
 import routes from '~/routes';
+import store from '~/store';
 
 import App from '~/App';
 
 render((
-    <App store={store} routes={routes} history={browserHistory} />
+    <App
+        store={store}
+        routes={routes}
+        history={history}
+    />
 ), document.getElementById('app'));
