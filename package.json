@@ -19,6 +19,7 @@
     "react-toolbox": "0.16.2",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
+    "reselect": "2.5.1",
     "roboto-fontface": "0.4.5"
   },
   "devDependencies": {

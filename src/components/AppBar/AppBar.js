@@ -3,24 +3,25 @@ import { AppBar as TopBar, IconButton } from 'react-toolbox';
 
 import style from './style';
 
-function AppBar({ onDrawerClick }) {
+function AppBar({ title, onDrawerOpen }) {
     return (
         <div className={style.container}>
             <TopBar className={style.header}>
                 <IconButton
                     icon="menu" inverse
-                    onClick={onDrawerClick}
+                    onClick={onDrawerOpen}
                     className={style.menu}
                 />
                 
-                <h1>FRI Urnik</h1>
+                <h1>{ title }</h1>
             </TopBar>
         </div>
     );
 }
 
 AppBar.propTypes = {
-    onDrawerClick: PropTypes.func.isRequired
+    title: PropTypes.string.isRequired,
+    onDrawerOpen: PropTypes.func.isRequired
 };
 
 export default AppBar;

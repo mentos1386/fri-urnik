@@ -1,9 +1,6 @@
-import { combineReducers } from 'redux';
-import { map, mapValues, sortedUniq, groupBy, partial } from 'lodash';
-
 import {
     REQUEST_SCHEDULE, RECEIVE_SCHEDULE
-} from '~/actions/schedules';
+} from '~/constants/actions';
 
 const initial = {
     parent: {},

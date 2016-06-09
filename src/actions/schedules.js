@@ -1,8 +1,9 @@
 import fetch from 'isomorphic-fetch';
 import { sortBy } from 'lodash';
 
-const REQUEST_SCHEDULE = 'REQUEST_SCHEDULE';
-const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
+import {
+    REQUEST_SCHEDULE, RECEIVE_SCHEDULE
+} from '~/constants/actions';
 
 function requestSchedule(id, field) {
     return {
@@ -34,9 +35,5 @@ function fetchSchedule(id, field) {
         }
     };
 }
-
-export {
-    REQUEST_SCHEDULE, RECEIVE_SCHEDULE
-};
 
 export { fetchSchedule };

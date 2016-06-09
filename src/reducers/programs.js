@@ -4,7 +4,7 @@ import { map, mapValues, sortedUniq, groupBy, partial } from 'lodash';
 import {
     REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
     REQUEST_GROUPS, RECEIVE_GROUPS
-} from '~/actions/programs';
+} from '~/constants/actions';
 
 const initial = {
     items: [],

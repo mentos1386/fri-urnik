@@ -1,11 +1,10 @@
 import fetch from 'isomorphic-fetch';
 import { sortBy } from 'lodash';
 
-const REQUEST_PROGRAMS = 'REQUEST_PROGRAMS';
-const RECEIVE_PROGRAMS = 'RECEIVE_PROGRAMS';
-
-const REQUEST_GROUPS = 'REQUEST_GROUPS';
-const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
+import {
+    REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
+    REQUEST_GROUPS, RECEIVE_GROUPS
+} from '~/constants/actions';
 
 function requestPrograms() {
     return {
@@ -67,10 +66,5 @@ function fetchGroups(program) {
         }
     };
 }
-
-export {
-    REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
-    REQUEST_GROUPS, RECEIVE_GROUPS
-};
 
 export { fetchPrograms, fetchGroups };
