@@ -2,13 +2,13 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown } from 'react-toolbox';
 
-import { fetchPrograms } from '~/actions/programs';
+import { requestPrograms } from '~/actions/programs';
 import { selectYears } from '~/selectors/programs';
 
 class YearSelector extends Component {
     
     componentWillMount() {
-        this.props.dispatch(fetchPrograms());
+        this.props.dispatch(requestPrograms());
     }
     
     render() {

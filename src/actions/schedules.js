@@ -20,7 +20,7 @@ function receiveSchedule(id, field, parent, allocations) {
 }
 
 function fetchSchedule(id, field) {
-    return async dispatch => {
+    /*return async dispatch => {
         dispatch(requestSchedule(id, field));
         
         try {
@@ -33,7 +33,7 @@ function fetchSchedule(id, field) {
         } catch (error) {
             console.warn(error);
         }
-    };
+    };*/
 }
 
 export { fetchSchedule };

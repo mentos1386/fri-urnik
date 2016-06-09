@@ -2,14 +2,14 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown } from 'react-toolbox';
 
-import { fetchGroups } from '~/actions/programs';
+import { requestGroups } from '~/actions/programs';
 import { selectGroups } from '~/selectors/programs';
 
 class ProgramSelector extends Component {
     
     componentWillReceiveProps(nextProps) {
         if (nextProps.forProgram != this.props.forProgram) {
-            this.props.dispatch(fetchGroups(nextProps.forProgram));
+            this.props.dispatch(requestGroups(nextProps.forProgram));
         }
     }
     
