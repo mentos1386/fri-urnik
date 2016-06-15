@@ -71,6 +71,10 @@ class Config {
             eot: {
                 test: /\.eot(\?.*)?$/,
                 loaders: [ 'file' ]
+            },
+            html: {
+                test: /\.html$/,
+                loaders: [ 'file?name=[name].[ext]' ]
             }
         };
     }

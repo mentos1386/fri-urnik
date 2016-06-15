@@ -10,8 +10,7 @@ class Config extends Base {
     
     get entry() {
         return [
-            // No URL is required when using the browser's location
-            `webpack-dev-server/client`,
+            'webpack-dev-server/client',
             'webpack/hot/only-dev-server',
             ...super.entry
         ];
