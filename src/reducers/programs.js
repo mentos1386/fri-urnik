@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { map, mapValues, sortedUniq, groupBy, partial } from 'lodash';
+import { map, mapValues, sortedUniq, groupBy } from 'lodash';
 
 import {
     REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
