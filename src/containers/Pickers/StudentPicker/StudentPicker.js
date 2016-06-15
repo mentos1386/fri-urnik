@@ -2,28 +2,28 @@ import { Component, PropTypes } from 'react';
 import { Input, Button } from 'react-toolbox';
 import { Card, CardTitle, CardText, CardActions } from 'react-toolbox';
 
-import style from './style';
+import style from '../style';
 
 class StudentPicker extends Component {
 
-    state = {
-        value: ''
-    };
+    shouldComponentUpdate(nextProps) {
+        return this.props.student !== nextProps.student;
+    }
 
     handleChange(value) {
         if (value.length <= 8) {
-            this.setState({ value });
+            this.props.setStudent(value);
         }
     }
     
     handleSelect() {
-        this.props.onSelect(this.state.value);
+        this.props.onOpen(this.props.student);
     }
 
     render() {
-        const { value } = this.state;
+        const { student } = this.props;
         
-        const disabled = value.length < 8;
+        const disabled = student.length < 8;
         
         return (
             <Card className={style.card}>
@@ -34,7 +34,7 @@ class StudentPicker extends Component {
                         type="number"
                         maxLength={8}
                         label="Vpisna številka"
-                        value={value}
+                        value={student}
                         onChange={::this.handleChange}
                     />
                 </CardText>
@@ -52,8 +52,15 @@ class StudentPicker extends Component {
     
 }
 
+StudentPicker.defaultProps = {
+    student: ''
+};
+
 StudentPicker.propTypes = {
-    onSelect: PropTypes.func.isRequired
+    student: PropTypes.string,
+    setStudent: PropTypes.func.isRequired,
+    
+    onOpen: PropTypes.func.isRequired
 };
 
 export default StudentPicker;

@@ -3,7 +3,7 @@ import { map, mapValues, sortedUniq, groupBy, partial } from 'lodash';
 
 import {
     REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
-    REQUEST_GROUPS, RECEIVE_GROUPS
+    REQUEST_GROUPS, RECEIVE_GROUPS,
 } from '~/constants/actions';
 
 const initial = {
@@ -11,7 +11,7 @@ const initial = {
     loading: false
 };
 
-function list(state = initial, { type, items }) {
+function entries(state = initial, { type, items }) {
     switch (type) {
         case REQUEST_PROGRAMS:
         case REQUEST_GROUPS:
@@ -31,7 +31,7 @@ function years(state = initial, { type, items }) {
         case REQUEST_PROGRAMS:
         case RECEIVE_PROGRAMS:
             const years = sortedUniq(map(items, 'year'));
-            return list(state, { type, items: years });
+            return entries(state, { type, items: years });
             
         default:
             return state;
@@ -39,19 +39,16 @@ function years(state = initial, { type, items }) {
 }
 
 function programsByYear(state = {}, { type, items }) {
-    const reducer = partial(list, undefined);
-    
     switch (type) {
         case REQUEST_PROGRAMS:
-            return mapValues(state, programs => reducer({
-                type
-            }));
+            return mapValues(state, programs => {
+                return entries(programs, { type });
+            });
             
         case RECEIVE_PROGRAMS:
-            return mapValues(groupBy(items, 'year'), programs => reducer({
-                items: programs,
-                type
-            }));
+            return mapValues(groupBy(items, 'year'), programs => {
+                return entries(undefined, { type, items: programs });
+            });
             
         default:
             return state;
@@ -66,7 +63,7 @@ function groupsByProgram(state = {}, action) {
         case RECEIVE_GROUPS:
             return {
                 ...state,
-                [program]: list(state[program], action)
+                [program]: entries(state[program], action)
             };
             
         default:

@@ -4,7 +4,7 @@ import {
     Root,
     Home,
     Schedule
-} from '~/views';
+} from '~/layouts';
 
 const routes = (
     <Route path="/" component={Root}>

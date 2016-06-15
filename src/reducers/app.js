@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { UPDATE_TITLE } from '~/constants/actions';
+import { SET_TITLE, RESET_TITLE } from '~/constants/actions';
 
-function title(state = 'FRI Urnik', { type, title }) {
+const initialTitle = 'FRI Urnik';
+
+function title(state = initialTitle, { type, title }) {
     switch(type) {
-        case UPDATE_TITLE:
+        case SET_TITLE:
             return title;
+        
+        case RESET_TITLE:
+            return initialTitle;
         
         default:
             return state;

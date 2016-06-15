@@ -1,6 +1,7 @@
 import {
     REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
-    REQUEST_GROUPS, RECEIVE_GROUPS
+    REQUEST_GROUPS, RECEIVE_GROUPS,
+    LOAD_PROGRAMS
 } from '~/constants/actions';
 
 function requestPrograms() {
@@ -30,7 +31,14 @@ function receiveGroups(program, items) {
     };
 }
 
+function loadPrograms() {
+    return {
+        type: LOAD_PROGRAMS
+    };
+}
+
 export {
     requestPrograms, receivePrograms,
-    requestGroups, receiveGroups
+    requestGroups, receiveGroups,
+    loadPrograms
 };

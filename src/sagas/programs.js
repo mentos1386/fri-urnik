@@ -1,55 +1,42 @@
-import fetch from 'isomorphic-fetch';
-import { sortBy } from 'lodash';
-
 import { takeEvery } from 'redux-saga';
 import { take, fork, call, put } from 'redux-saga/effects';
 
-import {
-    REQUEST_PROGRAMS, RECEIVE_PROGRAMS,
-    REQUEST_GROUPS, RECEIVE_GROUPS
-} from '~/constants/actions';
+import { fetchPrograms, fetchGroups } from '~/api/programs';
+import { LOAD_PROGRAMS, SET_PROGRAM } from '~/constants/actions';
 
 import {
-    receivePrograms,
-    receiveGroups
+    requestPrograms, receivePrograms,
+    requestGroups, receiveGroups,
 } from '~/actions/programs';
 
-async function fetchPrograms() {
-    const response = await fetch('/api/programs');
-    const { index: programs } = await response.json();
-    
-    return sortBy(programs, [ 'year', 'name' ]);
-}
-
-async function fetchGroups(program) {
-    const response = await fetch(`/api/programs/${program}/groups`);
-    const { index: groups } = await response.json();
-    
-    return sortBy(groups, 'group');
+function* updatePrograms() {
+    try {
+        yield put(requestPrograms());
+        const items = yield call(fetchPrograms);
+        yield put(receivePrograms(items));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function* watchPrograms() {
-    while (yield take(REQUEST_PROGRAMS)) {
-        try {
-            const items = yield call(fetchPrograms);
-            yield put(receivePrograms(items));
-        } catch (error) {
-            console.log(error);
-        }
+    while (yield take(LOAD_PROGRAMS)) {
+        yield call(updatePrograms);
     }
 }
 
 function* updateGroups({ program }) {
     try {
-            const items = yield call(fetchGroups, program);
-            yield put(receiveGroups(program, items));
-        } catch (error) {
-            console.log(error);
-        }
+        yield put(requestGroups(program));
+        const items = yield call(fetchGroups, program);
+        yield put(receiveGroups(program, items));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function* watchGroups() {
-    yield* takeEvery(REQUEST_GROUPS, updateGroups);
+    yield* takeEvery(SET_PROGRAM, updateGroups);
 }
 
 function* programs() {
