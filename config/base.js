@@ -29,13 +29,18 @@ class Config {
     }
     
     get module() {
+        const prebuilt = [
+            this.path('node_modules', 'localforage')
+        ];
+        
         return {
-            loaders: Object.values(this.loaders)
+            loaders: Object.values(this.loaders),
+            noParse: prebuilt
         };
     }
     
     get loaders() {
-        // While webpack expects an array loaders returns an object
+        // While webpack expects an array, loaders returns an object
         // for easier overriding of the loaders
         return {
             js: {
@@ -53,19 +58,19 @@ class Config {
             },
             woff: {
                 test: /\.woff2?(\?.*)?$/,
-                loaders:[ 'url?limit=10000&mimetype=application/font-woff' ]
+                loaders: [ 'url?limit=10000&mimetype=application/font-woff' ]
             },
             svg: {
                 test: /\.svg(\?.*)?$/,
-                loaders:[ 'url?limit=10000&mimetype=svg+xml' ]
+                loaders: [ 'url?limit=10000&mimetype=svg+xml' ]
             },
             ttf: {
                 test: /\.ttf(\?.*)?$/,
-                loaders:[ 'file' ]
+                loaders: [ 'file' ]
             },
             eot: {
                 test: /\.eot(\?.*)?$/,
-                loaders:[ 'file' ]
+                loaders: [ 'file' ]
             }
         };
     }
