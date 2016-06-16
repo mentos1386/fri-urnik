@@ -17,20 +17,20 @@ function studentSelection(state = '', { type, student }) {
     }
 }
 
-function groupSelection(state = {}, { type, ...values }) {
-    switch (type) {
-        case SET_YEAR:
-            return { ...state, ...values, program: null, group: null };
-            
-        case SET_PROGRAM:
-            return { ...state, ...values, group: null };
-            
-        case SET_GROUP:
-            return { ...state, ...values };
-        
-        default:
-            return state;
+function groupSelection(state = {}, { type, year, program, group }) {
+    if (type === SET_YEAR && year !== state.year) {
+        return { ...state, year, program: null, group: null };
     }
+    
+    if (type === SET_PROGRAM && program !== state.program) {
+        return { ...state, program, group: null };
+    }
+    
+    if (type === SET_GROUP && group !== state.group) {
+        return { ...state, group };
+    }
+    
+    return state;
 }
 
 export default combineReducers({
