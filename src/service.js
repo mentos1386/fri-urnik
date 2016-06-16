@@ -54,6 +54,9 @@ const activate = async () => {
     const invalid = names.filter(asset => !assets.includes(asset));
     await Promise.all(invalid.map(asset => cache.delete(asset)));
     
+    const fonts = assets.filter(asset => asset.endsWith('.woff2'));
+    cache.addAll(fonts);
+    
     clients.claim();
 };
 
