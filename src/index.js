@@ -14,8 +14,10 @@ import store from '~/store';
 
 import App from '~/App';
 
-if ('serviceWorker' in window.navigator) {
-    runtime.register();
+if (process.env.NODE_ENV === 'production') {
+    if ('serviceWorker' in window.navigator) {
+        runtime.register();
+    }
 }
 
 render((
