@@ -34,7 +34,7 @@ const openCache = (asset) => {
 const install = async () => {
     try {
         const cache = await caches.open(MAIN_CACHE);
-        cache.addAll(main);
+        await cache.addAll(main);
         
         skipWaiting();
     } catch (error) {
@@ -55,7 +55,7 @@ const activate = async () => {
     await Promise.all(invalid.map(asset => cache.delete(asset)));
     
     const fonts = assets.filter(asset => asset.endsWith('.woff2'));
-    cache.addAll(fonts);
+    await cache.addAll(fonts);
     
     clients.claim();
 };
@@ -89,7 +89,7 @@ const load = async (asset) => {
     }
     
     const response = await fetch(asset);
-    cache.put(asset, response.clone());
+    await cache.put(asset, response.clone());
     
     return response;
 };
