@@ -1,0 +1,12 @@
+@import "~react-toolbox/lib/globals";
+
+$color-primary: $palette-red-500;
+$color-primary-dark: $palette-red-700;
+$color-accent: $palette-blue-grey-500;
+$color-accent-dark: $palette-blue-grey-700;
+$color-primary-contrast: $color-dark-contrast;
+$color-accent-contrast: $color-dark-contrast;
+
+$appbar-color: $color-primary;
+
+$desktop-breakpoint: $layout-breakpoint-lg-tablet;
