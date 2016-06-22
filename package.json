@@ -43,12 +43,14 @@
     "toolbox-loader": "0.0.3",
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
+    "webpack-bundle-size-analyzer": "2.0.2",
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
     "start": "babel-node scripts/server.js",
     "build": "babel-node scripts/build.js",
-    "production": "babel-node scripts/production.js"
+    "production": "babel-node scripts/production.js",
+    "analyse": "babel-node scripts/build.js json | webpack-bundle-size-analyzer"
   },
   "author": "",
   "license": "MIT",
