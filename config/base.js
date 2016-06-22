@@ -58,11 +58,11 @@ class Config {
             },
             woff: {
                 test: /\.woff2?(\?.*)?$/,
-                loaders: [ 'url?limit=10000&mimetype=application/font-woff' ]
+                loaders: [ 'url?limit=1000&mimetype=application/font-woff' ]
             },
             svg: {
                 test: /\.svg(\?.*)?$/,
-                loaders: [ 'url?limit=10000&mimetype=svg+xml' ]
+                loaders: [ 'url?limit=1000&mimetype=svg+xml' ]
             },
             ttf: {
                 test: /\.ttf(\?.*)?$/,
@@ -101,7 +101,9 @@ class Config {
         return [
             new webpack.ProvidePlugin({
                 React: 'react'
-            })
+            }),
+            
+            new webpack.optimize.DedupePlugin()
         ];
     }
     
