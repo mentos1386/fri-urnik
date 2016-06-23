@@ -17,7 +17,7 @@ function App({ store, routes, history }) {
 
 App.propTypes = {
     store: PropTypes.object.isRequired,
-    routes: PropTypes.element.isRequired,
+    routes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
 };
 

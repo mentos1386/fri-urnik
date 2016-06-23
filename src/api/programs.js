@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { sortBy } from 'lodash';
+import sortBy from 'lodash/sortBy';
 
 const fetchPrograms = async () => {
     const response = await fetch('/api/programs');

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-import { Layout, NavDrawer, Panel } from 'react-toolbox';
+import { Layout, NavDrawer, Panel } from 'react-toolbox/lib/layout';
 
 import { AppBar, Drawer } from '~/components';
 

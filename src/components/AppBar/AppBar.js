@@ -1,5 +1,6 @@
 import { PropTypes } from 'react';
-import { AppBar as TopBar, IconButton } from 'react-toolbox';
+import TopBar from 'react-toolbox/lib/app_bar';
+import { IconButton } from 'react-toolbox/lib/button';
 
 import style from './style';
 

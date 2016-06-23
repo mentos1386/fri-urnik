@@ -1,6 +1,3 @@
-import fetch from 'isomorphic-fetch';
-import { sortBy } from 'lodash';
-
 import {
     REQUEST_SCHEDULE, RECEIVE_SCHEDULE
 } from '~/constants/actions';

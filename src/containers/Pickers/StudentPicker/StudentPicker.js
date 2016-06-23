@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
-import { Input, Button } from 'react-toolbox';
-import { Card, CardTitle, CardText, CardActions } from 'react-toolbox';
+import Button from 'react-toolbox/lib/button';
+import Input from 'react-toolbox/lib/input';
+import { Card, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
 
 import style from '../style';
 

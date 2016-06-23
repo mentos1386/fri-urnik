@@ -24,6 +24,7 @@ class Config {
         return {
             path: this.path('build'),
             filename: 'app.js',
+            chunkFilename: 'app.[id].js',
             publicPath: '/'
         };
     }
