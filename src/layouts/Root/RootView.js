@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-import { Layout, NavDrawer, Panel } from 'react-toolbox/lib/layout';
+import { Layout, Panel } from 'react-toolbox/lib/layout';
 
 import { AppBar, Drawer } from '~/components';
 
@@ -7,32 +7,21 @@ import style from './style';
 
 class RootView extends Component {
     
-    state = {
-        drawerOpen: false
-    };
-    
-    toggleDrawer() {
-        this.setState({
-            drawerOpen: !this.state.drawerOpen
-        });
+    openDrawer() {
+        this.refs.drawer.toggle();
     }
     
     render() {
-        const { drawerOpen } = this.state;
         const { title, children } = this.props;
         
         return (
             <Layout className={style.layout}>
-                <NavDrawer
-                    active={drawerOpen}
-                    onOverlayClick={::this.toggleDrawer}
-                    children={(<Drawer />)}
-                />
+                <Drawer ref="drawer" />
                 
                 <Panel className={style.panel}>
                     <AppBar
                         title={title}
-                        onDrawerOpen={::this.toggleDrawer}
+                        onDrawerOpen={::this.openDrawer}
                     />
                     
                     <div className={style.wrapper}>
