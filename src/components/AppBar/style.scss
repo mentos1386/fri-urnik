@@ -16,10 +16,10 @@
         font-size: 2rem;
         font-weight: 500;
     }
-    
-    .menu {
-        margin-right: 0.8rem;
-    }
+}
+
+.menu {
+    margin-right: 0.8rem;
 }
 
 @media (min-width: $desktop-breakpoint) {
@@ -30,13 +30,13 @@
     .header {
         height: 6.4rem;
         padding: 0 2.4rem;
-        
-        .menu {
-            margin-right: 2rem;
-            
-            :global(.material-icons) {
-                font-size: 2.4rem;
-            }
-        }
+    }
+    
+    .menu {
+        margin-right: 2rem;
+    }
+    
+    .icon {
+        font-size: 2.4rem;
     }
 }

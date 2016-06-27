@@ -4,14 +4,20 @@ import { IconButton } from 'react-toolbox/lib/button';
 
 import style from './style';
 
+const theme = {
+    appBar: style.header,
+    neutral: style.menu,
+    icon: style.icon
+};
+
 function AppBar({ title, onDrawerOpen }) {
     return (
         <div className={style.container}>
-            <TopBar className={style.header}>
+            <TopBar theme={theme}>
                 <IconButton
                     icon="menu" inverse
                     onClick={onDrawerOpen}
-                    className={style.menu}
+                    theme={theme}
                 />
                 
                 <h1>{ title }</h1>

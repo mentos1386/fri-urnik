@@ -15,10 +15,10 @@ class RootView extends Component {
         const { title, children } = this.props;
         
         return (
-            <Layout className={style.layout}>
+            <Layout theme={style}>
                 <Drawer ref="drawer" />
                 
-                <Panel className={style.panel}>
+                <Panel theme={style}>
                     <AppBar
                         title={title}
                         onDrawerOpen={::this.openDrawer}
