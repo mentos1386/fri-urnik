@@ -55,7 +55,7 @@ class Config {
             },
             scss: {
                 test: /\.scss$/,
-                loaders: [ 'style', 'css?modules', 'sass', 'toolbox' ]
+                loaders: [ 'style', 'css?modules', 'sass' ]
             },
             woff: {
                 test: /\.woff2?(\?.*)?$/,
@@ -108,9 +108,9 @@ class Config {
         ];
     }
     
-    get toolbox() {
+    get sassLoader() {
         return {
-            theme: this.path('src', 'theme.scss')
+            data: `@import "${this.path('src', 'theme.scss')}";`
         };
     }
     
@@ -122,7 +122,7 @@ class Config {
             module: this.module,
             resolve: this.resolve,
             plugins: this.plugins,
-            toolbox: this.toolbox
+            sassLoader: this.sassLoader
         };
     }
     
