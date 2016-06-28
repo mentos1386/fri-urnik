@@ -1,0 +1,49 @@
+@import "~react-toolbox/lib/mixins";
+@import "~react-toolbox/lib/layout/config";
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    
+    transition: width 10ms linear $animation-duration;
+    z-index: 300;
+    
+    &.active {
+        width: 100%;
+        transition: none;
+    }
+}
+
+.scrim {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    background-color: rgba($drawer-overlay-color, $drawer-overlay-opacity);
+    transition: opacity $animation-duration $animation-curve-linear-out-slow-in;
+}
+
+.drawer {
+    @include shadow-2dp();
+    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    
+    height: 100%;
+    
+    overflow-x: hidden;
+    overflow-y: hidden;
+    
+    color: $drawer-text-color;
+    background-color: $drawer-background-color;
+    border-right: 1px solid $drawer-border-color;
+    
+    transition: transform $animation-duration $animation-curve-linear-out-slow-in;
+}
