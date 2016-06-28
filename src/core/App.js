@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 
-import { createHistory } from '~/history';
+import { createHistory } from './history';
 
 function App({ store, routes, history }) {
     return (

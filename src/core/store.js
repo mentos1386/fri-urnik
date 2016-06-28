@@ -5,7 +5,7 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import { createStore, compose, applyMiddleware } from 'redux';
 
 import sagas from '~/sagas';
-import history from '~/history';
+import history from './history';
 import reducer from '~/reducers';
 
 const saga = createSagaMiddleware();
