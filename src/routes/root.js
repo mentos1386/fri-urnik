@@ -5,6 +5,7 @@ const route = {
     getChildRoutes(partialNextState, callback) {
         require.ensure([], function (require) {
             callback(null, [
+                require('./setup').default,
                 require('./schedule').default
             ]);
         });
@@ -13,7 +14,7 @@ const route = {
     getIndexRoute(partialNextState, callback) {
         require.ensure([], function (require) {
             callback(null, {
-                component: require('~/layouts/Home').default
+                component: require('~/layouts/Dashboard').default
             });
         });
     },
