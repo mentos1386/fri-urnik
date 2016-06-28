@@ -12,7 +12,7 @@ const register = async () => {
     const workers = await window.navigator.serviceWorker.getRegistrations();
     
     for (const worker in workers) {
-        if ('unregister' in worker) {
+        if (worker.unregister) {
             worker.unregister();
         }
     }
