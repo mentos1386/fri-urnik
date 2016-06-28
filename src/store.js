@@ -23,7 +23,11 @@ const enhancer = compose(...[
 
 const store = createStore(reducer, enhancer);
 
-persistStore(store, { storage: localforage });
+persistStore(store, {
+    storage: localforage,
+    blacklist: [ 'routing' ]
+});
+
 saga.run(sagas);
 
 export default store;
