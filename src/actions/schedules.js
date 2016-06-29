@@ -1,5 +1,5 @@
 import {
-    REQUEST_SCHEDULE, RECEIVE_SCHEDULE
+    REQUEST_SCHEDULE, RECEIVE_SCHEDULE, LOAD_SCHEDULE
 } from '~/constants/actions';
 
 function requestSchedule(id, field) {
@@ -9,28 +9,19 @@ function requestSchedule(id, field) {
     };
 }
 
-function receiveSchedule(id, field, parent, allocations) {
+function receiveSchedule(id, field, schedule) {
     return {
+        ...schedule,
         type: RECEIVE_SCHEDULE,
-        id, field, parent, allocations
+        id, field
     };
 }
 
-function fetchSchedule(id, field) {
-    /*return async dispatch => {
-        dispatch(requestSchedule(id, field));
-        
-        try {
-            const response = await fetch(`/api/${field}s/${id}/schedules`);
-            const { parent, allocations } = await response.json();
-            
-            const items = sortBy(allocations, [ 'day', 'hour' ]);
-            
-            dispatch(receiveSchedule(id, field, parent, items));
-        } catch (error) {
-            console.warn(error);
-        }
-    };*/
+function loadSchedule(id, field) {
+    return {
+        type: LOAD_SCHEDULE,
+        id, field
+    };
 }
 
-export { fetchSchedule };
+export { requestSchedule, receiveSchedule, loadSchedule };

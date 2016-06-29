@@ -11,6 +11,7 @@ export const REQUEST_SCHEDULE = 'REQUEST_SCHEDULE';
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
 
 export const LOAD_PROGRAMS = 'LOAD_PROGRAMS';
+export const LOAD_SCHEDULE = 'LOAD_SCHEDULE';
 
 export const SET_YEAR = 'SET_YEAR';
 export const SET_GROUP = 'SET_GROUP';

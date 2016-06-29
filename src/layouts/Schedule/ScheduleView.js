@@ -1,4 +1,4 @@
-function ScheduleView() {
+function ScheduleView(props) {
     return <div />;
 }
 
