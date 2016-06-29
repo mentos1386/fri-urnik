@@ -1,24 +1,16 @@
-import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { loadPrograms, } from '~/actions/programs';
+import { loader } from '~/decorators';
+import { loadPrograms } from '~/actions/programs';
 
 import SetupView from './SetupView';
 
-class Setup extends Component {
-    
-    componentWillMount() {
-        this.props.loadPrograms();
-    }
-    
-    render() {
-        return <SetupView {...this.props} />;
-    }
-    
-}
-
 const SetupContainer = connect(
-    null, { loadPrograms }
-)(Setup);
+    null
+)(SetupView);
 
-export default SetupContainer;
+const SetupLoader = loader(({ dispatch }) => {
+    dispatch(loadPrograms());
+})(SetupContainer);
+
+export default SetupLoader;
