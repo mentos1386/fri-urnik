@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 
-import { loader } from '~/decorators';
+import { layout, loader } from '~/decorators';
+import { setTitle } from '~/actions/app';
 import { loadPrograms } from '~/actions/programs';
 
 import SetupView from './SetupView';
 
+const SetupLayout = layout()(SetupView);
+
 const SetupContainer = connect(
-    null
-)(SetupView);
+    null, { setTitle }
+)(SetupLayout);
 
 const SetupLoader = loader(({ dispatch }) => {
     dispatch(loadPrograms());

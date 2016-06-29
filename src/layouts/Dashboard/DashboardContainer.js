@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { loader } from '~/decorators';
+import { layout, loader } from '~/decorators';
 
 import DashboardView from './DashboardView';
 
+const DashboardLayout = layout()(DashboardView);
+
 const DashboardContainer = connect(
     null
-)(DashboardView);
+)(DashboardLayout);
 
 const DashboardLoader = loader(({ dispatch }) => {
     dispatch(push('/setup'));

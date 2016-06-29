@@ -1,4 +1,4 @@
-import { SET_TITLE } from '~/constants/actions';
+import { SET_TITLE, RESET_TITLE } from '~/constants/actions';
 
 function setTitle(title) {
     return {
@@ -7,4 +7,10 @@ function setTitle(title) {
     };
 }
 
-export { setTitle };
+function resetTitle() {
+    return {
+        type: RESET_TITLE
+    };
+}
+
+export { setTitle, resetTitle };

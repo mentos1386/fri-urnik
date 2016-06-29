@@ -1,3 +1,7 @@
+import layout from './layout';
 import loader from './loader';
 
-export { loader };
+export {
+    layout,
+    loader
+};
