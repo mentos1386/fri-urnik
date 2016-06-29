@@ -1,5 +1,9 @@
 import { Component, PropTypes } from 'react';
 
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
 function loader(handler) {
     function wrapWithLoader(WrappedComponent) {
         class Loader extends Component {
@@ -22,7 +26,7 @@ function loader(handler) {
             }
         }
         
-        Loader.displayName = `Loader(${WrappedComponent.displayName})`;
+        Loader.displayName = `Loader(${getDisplayName(WrappedComponent)})`;
         
         Loader.contextTypes = {
             store: PropTypes.shape({
