@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 import { layout, loader } from '~/decorators';
-import { setTitle } from '~/actions/app';
 import { loadSchedule } from '~/actions/schedules';
 import { getSchedule } from '~/selectors/schedules';
 
@@ -21,8 +20,7 @@ const ScheduleContainer = connect(
     (state, { params }) => ({
         ...getSchedule(state, params)
     }), {
-        loadSchedule,
-        setTitle
+        loadSchedule
     }
 )(ScheduleLayout);
 
