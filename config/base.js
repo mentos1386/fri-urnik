@@ -110,7 +110,7 @@ class Config {
     
     get sassLoader() {
         return {
-            data: `@import "${this.path('src', 'theme.scss')}";`
+            data: `@import "${this.path('src', 'styles', 'theme.scss')}";`
         };
     }
     

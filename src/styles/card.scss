@@ -1,0 +1,13 @@
+div.card {
+    margin: 0.8rem 0;
+}
+
+div.cardActions {
+    justify-content: flex-end;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    div.card {
+        margin: 1.6rem 0;
+    }
+}

@@ -19,10 +19,10 @@ class GroupPicker extends Component {
     
     render() {
         return (
-            <Card className={style.card}>
+            <Card theme={style}>
                 <CardTitle title="Poišči urnik" />
                 
-                <CardText className={style.content}>
+                <CardText theme={style}>
                     <Dropdown
                         label="Letnik"
                         value={this.props.year}
@@ -45,7 +45,7 @@ class GroupPicker extends Component {
                     />
                 </CardText>
                 
-                <CardActions className={style.actions}>
+                <CardActions>
                     <Button
                         label="Odpri"
                         disabled={this.props.group == null}

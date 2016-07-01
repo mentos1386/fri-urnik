@@ -27,10 +27,10 @@ class StudentPicker extends Component {
         const disabled = student.length < 8;
         
         return (
-            <Card className={style.card}>
+            <Card theme={style}>
                 <CardTitle title="Poišči urnik" />
                 
-                <CardText className={style.content}>
+                <CardText theme={style}>
                     <Input
                         type="number"
                         maxLength={8}
@@ -40,7 +40,7 @@ class StudentPicker extends Component {
                     />
                 </CardText>
                 
-                <CardActions className={style.actions}>
+                <CardActions>
                     <Button
                         label="Odpri"
                         disabled={disabled}

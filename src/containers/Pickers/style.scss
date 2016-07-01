@@ -1,19 +1,7 @@
 .card {
-    margin: 0.8rem 0;
-    
     overflow: visible;
 }
 
-.card .content {
+.cardText {
     padding-bottom: 0;
-}
-
-.card .actions {
-    justify-content: flex-end;
-}
-
-@media (min-width: $desktop-breakpoint) {
-    .card {
-        margin: 1.6rem 0;
-    }
 }
