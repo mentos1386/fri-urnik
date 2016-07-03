@@ -19,12 +19,12 @@
 
 @for $i from 1 through 6 {
     .skipped-#{$i} {
-        margin-top: $full-height * $i + $large-margin !important;
+        margin-top: $allocation-height * $i + $large-margin !important;
     }
 }
 
 @for $i from 1 through 6 {
     .duration-#{$i} {
-        height: $full-height * $i - $large-margin !important;
+        height: $allocation-height * $i - $large-margin !important;
     }
 }

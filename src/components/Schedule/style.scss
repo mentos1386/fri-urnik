@@ -1,0 +1,136 @@
+@import "../Allocation/config";
+
+// Mobile
+
+.container {
+    // Extends to screen edge
+    margin: 0 (-$small-margin);
+}
+
+.schedule {
+    margin: $small-margin;
+}
+
+.day, .hours {
+    display: none;
+}
+
+.duration {
+    // Align with card content
+    padding-left: 2 * $small-margin;
+}
+
+// Tabs
+
+.tabs {
+    // AppBar's box shadow
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    
+    .navigation {
+        background: $color-primary;
+        box-shadow: none;
+        
+        // Move above AppBar's original box shadow
+        z-index: $z-index-high;
+        
+        .label {
+            width: 20%;
+            text-align: center;
+            
+            transition-property: box-shadow;
+            
+            &.active {
+                color: $color-dark-contrast;
+            }
+        }
+    }
+    
+    .pointer {
+        background-color: $color-dark-contrast;
+        
+        z-index: $z-index-high;
+    }
+}
+
+// Desktop
+
+$day-offset: 10px;
+$day-height: 45px;
+
+$hours-offset: 15px;
+$hours-width: 60px;
+
+@media (min-width: $desktop-breakpoint) {
+    
+    .container {
+        // Used to limit horizontal lines
+        position: relative;
+        
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .schedule {
+        // Collapsed margins 
+        margin: 0;
+        margin-right: $small-margin;
+        
+        flex: 1;
+        
+        // Move above horizontal lines
+        z-index: $z-index-normal;
+    }
+    
+    .day {
+        display: block;
+        
+        height: $day-height;
+        margin-top: $allocation-height - $day-height;
+        
+        font-size: $day-height - $day-offset;
+        text-align: center;
+        
+        color: fade_out($color-light-contrast, 0.1);
+    }
+    
+    .hours {
+        display: block;
+        
+        width: $hours-width;
+        padding-top: $day-height + $hours-offset;
+        margin-right: $small-margin;
+        
+        border-right: 1px solid $palette-grey-300;
+    }
+    
+    .hour {
+        height: $allocation-height;
+        padding-right: $small-margin * 2;
+        
+        text-align: right;
+        line-height: $allocation-height;
+        
+        &:first-child {
+            border-top: 1px solid $palette-grey-300;
+        }
+        
+        // Horizontal lines
+        &:after {
+            content: "";
+            
+            position: absolute;
+            width: 100%;
+            
+            margin-top: $allocation-height / 2;
+            margin-left: $small-margin * 2;
+            
+            height: 1px;
+            border-top: 1px solid $palette-grey-300;
+        }
+    }
+    
+    .duration {
+        display: none;
+    }
+    
+}
