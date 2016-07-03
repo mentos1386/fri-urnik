@@ -19,9 +19,7 @@ const ScheduleLayout = layout({
 const ScheduleContainer = connect(
     (state, { params }) => ({
         ...getSchedule(state, params)
-    }), {
-        loadSchedule
-    }
+    })
 )(ScheduleLayout);
 
 const ScheduleLoader = loader(({ params: { id, field }, dispatch }) => {
