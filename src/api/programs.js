@@ -12,7 +12,7 @@ const fetchGroups = async (program) => {
     const response = await fetch(`/api/programs/${program}/groups`);
     const { index: groups } = await response.json();
     
-    return sortBy(groups, 'group');
+    return groups;
 };
 
 export { fetchPrograms, fetchGroups };

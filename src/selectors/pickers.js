@@ -34,14 +34,23 @@ const getPrograms = createSelector(findPrograms, (programs) => {
     })) : [];
 });
 
+const groupName = ({ group, activity, tag }) => {
+    if (tag) {
+        return `${activity} (${tag}), ${group}. skupina`;
+    }
+    
+    if (activity) {
+        return `${activity}, ${group}. skupina`;
+    }
+    
+    return `${group}. skupina`;
+};
+
 const getGroups = createSelector(getSelection, findGroups, ({ program }, groups) => {
-    return groups ? [{
-        value: program,
-        label: 'Brez skupine'
-    }, ...groups.items.map(group => ({
+    return groups ? groups.items.map(group => ({
         value: group.id,
-        label: `${group.group}. skupina`
-    }))] : [];
+        label: groupName(group)
+    })) : [];
 });
 
 export {
