@@ -30,7 +30,7 @@ class StudentPicker extends Component {
             <Card theme={style}>
                 <CardTitle title="Poišči urnik" />
                 
-                <CardText theme={style}>
+                <CardText>
                     <Input
                         type="number"
                         maxLength={8}

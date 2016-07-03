@@ -22,7 +22,7 @@ class GroupPicker extends Component {
             <Card theme={style}>
                 <CardTitle title="Poišči urnik" />
                 
-                <CardText theme={style}>
+                <CardText>
                     <Dropdown
                         label="Letnik"
                         value={this.props.year}
