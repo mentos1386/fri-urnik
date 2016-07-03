@@ -13,11 +13,5 @@
     max-width: $desktop-breakpoint;
     
     margin: 0 auto;
-    padding: 0 0.8rem;
-}
-
-@media (min-width: $desktop-breakpoint) {
-    .wrapper {
-        padding: 0;
-    }
+    padding: 0 $small-margin;
 }
