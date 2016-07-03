@@ -1,0 +1,30 @@
+@import "./config";
+
+.allocation {
+    color: $color-dark-contrast;
+    background: $color-accent;
+}
+
+.lecture {
+    background: $color-primary;
+}
+
+.teacher {
+    color: fade_out($color-dark-contrast, 0.3);
+}
+
+.allocation .title {
+    font-size: 2rem !important;
+}
+
+@for $i from 1 through 6 {
+    .skipped-#{$i} {
+        margin-top: $full-height * $i + $large-margin !important;
+    }
+}
+
+@for $i from 1 through 6 {
+    .duration-#{$i} {
+        height: $full-height * $i - $large-margin !important;
+    }
+}
