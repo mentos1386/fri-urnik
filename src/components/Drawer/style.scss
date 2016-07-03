@@ -9,7 +9,7 @@
     width: 0;
     
     transition: width 10ms linear $animation-duration;
-    z-index: 300;
+    z-index: $z-index-highest;
     
     &.active {
         width: 100%;

@@ -39,11 +39,11 @@ class Drawer extends Component {
     }
     
     componentWillMount() {
-        window.addEventListener('resize', this.resize);
-        window.addEventListener('touchend', this.touchEnd);
-        window.addEventListener('touchmove', this.touchMove);
-        window.addEventListener('touchstart', this.touchStart);
-        window.addEventListener('touchcancel', this.touchCancel);
+        window.addEventListener('resize', this.resize, true);
+        window.addEventListener('touchend', this.touchEnd, true);
+        window.addEventListener('touchmove', this.touchMove, true);
+        window.addEventListener('touchstart', this.touchStart, true);
+        window.addEventListener('touchcancel', this.touchCancel, true);
     }
     
     componentDidMount() {
@@ -69,7 +69,9 @@ class Drawer extends Component {
         
         const touch = event.touches[0];
         
-        if (touch.clientX > DRAG_THRESHOLD && !open) return;
+        if (touch.clientX > MIN_DISTANCE && !open) return;
+        
+        event.stopPropagation();
         
         this.firstTouch = touch;
         this.setState({ dragStart: Date.now() });
@@ -80,6 +82,8 @@ class Drawer extends Component {
         
         if (this.state.dragging) {
             event.preventDefault();
+            event.stopPropagation();
+            
             this.setPosition(touch.clientX);
             return;
         }
