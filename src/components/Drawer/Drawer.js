@@ -69,7 +69,7 @@ class Drawer extends Component {
         
         const touch = event.touches[0];
         
-        if (touch.clientX > MIN_DISTANCE && !open) return;
+        if (touch.clientX > DRAG_THRESHOLD && !open) return;
         
         event.stopPropagation();
         
