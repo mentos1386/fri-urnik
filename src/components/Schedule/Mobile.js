@@ -55,6 +55,7 @@ class Mobile extends Component {
                 
                 <SwipeableViews
                     index={active}
+                    className={style.tabContent}
                     onChangeIndex={::this.handleChange}
                     containerStyle={{ height: 'auto' }}
                 >
