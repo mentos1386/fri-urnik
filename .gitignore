@@ -1,2 +1,11 @@
-# Ignore build
+# NPM
+npm-debug.log
+
+# Build
 build/*
+cordova/*.apk
+
+# Cordova
+cordova/platforms
+cordova/plugins
+cordova/www

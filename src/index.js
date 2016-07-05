@@ -1,4 +1,5 @@
 import '~/index.html';
+import '~/cordova.html';
 
 import 'material-design-icons/iconfont/material-icons';
 import 'roboto-fontface/css/roboto-fontface';
