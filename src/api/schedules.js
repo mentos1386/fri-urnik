@@ -1,9 +1,11 @@
 import fetch from 'isomorphic-fetch';
 import sortBy from 'lodash/sortBy';
 
+const baseUrl = process.env.API;
+
 const fetchSchedule = async (id, field) => {
     try {
-        const response = await fetch(`/api/${field}s/${id}/schedules`);
+        const response = await fetch(`${baseUrl}/api/${field}s/${id}/schedules`);
         const { parent, allocations } = await response.json();
         
         return {
