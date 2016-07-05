@@ -1,6 +1,10 @@
 import webpack from 'webpack';
 import { join, resolve } from 'path';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.APP_ENV = process.env.HISTORY || 'browser';
+process.env.API = process.env.API || '';
+
 class Config {
     
     get base() {
@@ -17,7 +21,7 @@ class Config {
     }
     
     get entry() {
-        return [ 'babel-polyfill', './src/index.js' ];
+        return [ 'babel-polyfill', this.path('src', 'index.js') ];
     }
     
     get output() {
@@ -100,6 +104,13 @@ class Config {
     
     get plugins() {
         return [
+            // React needs NODE_ENV for it's production build
+            new webpack.EnvironmentPlugin([
+                'NODE_ENV',
+                'APP_ENV',
+                'API'
+            ]),
+            
             new webpack.ProvidePlugin({
                 React: 'react'
             }),

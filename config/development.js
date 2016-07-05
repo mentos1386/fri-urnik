@@ -33,6 +33,7 @@ class Config extends Base {
     get plugins() {
         return [
             ...super.plugins,
+            
             new webpack.HotModuleReplacementPlugin()
         ];
     }

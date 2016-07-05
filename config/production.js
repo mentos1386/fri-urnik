@@ -3,15 +3,12 @@ import ServiceWorkerWepbackPlugin from 'serviceworker-webpack-plugin';
 
 import Base from './base';
 
+process.env.NODE_ENV = 'production';
+
 class Config extends Base {
     
     get plugins() {
         return [
-            // React needs NODE_ENV for it's production build
-            new webpack.EnvironmentPlugin([
-                'NODE_ENV'
-            ]),
-            
             ...super.plugins,
             
             new ServiceWorkerWepbackPlugin({
