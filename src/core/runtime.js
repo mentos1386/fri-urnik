@@ -1,23 +1,34 @@
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import { register } from 'serviceworker-webpack-plugin/lib/runtime';
 
-const register = async () => {
-    if (!('serviceWorker' in window.navigator)) {
+const unregister = async () => {
+    const serviceWorker = window.navigator.serviceWorker;
+    const workers = await serviceWorker.getRegistrations();
+    
+    return Promise.all(workers.map(unregisterWorker));
+};
+
+const unregisterWorker = (worker) => {
+    if (worker.unregister) {
+        return worker.unregister();
+    } else {
         return null;
     }
+};
+
+const runtime = () => {
+    const browser = process.env.APP_ENV === 'browser';
+    const production = process.env.NODE_ENV === 'production';
+    const supported = 'serviceWorker' in window.navigator;
     
-    if (process.env.NODE_ENV === 'production') {
-        return runtime.register();
-    }
-    
-    const workers = await window.navigator.serviceWorker.getRegistrations();
-    
-    for (const worker in workers) {
-        if (worker.unregister) {
-            worker.unregister();
+    if (browser && supported) {
+        if (production) {
+            return register();
+        } else {
+            return unregister();
         }
     }
     
     return null;
 };
 
-export { register };
+export default runtime;

@@ -1,5 +1,7 @@
-import { browserHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
+const browser = process.env.APP_ENV === 'browser';
 
 let reduxHistory = null;
 
@@ -12,4 +14,4 @@ function createHistory(store, history) {
 }
 
 export { createHistory };
-export default browserHistory;
+export default browser ? browserHistory : hashHistory;
